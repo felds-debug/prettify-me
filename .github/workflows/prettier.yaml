@@ -40,12 +40,13 @@ jobs:
       # - run: echo ${{ github }}
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout
         with:
           # Make sure the actual branch is checked out when running on pull requests
-          # ref: ${{ github.ref_name }}
+          ref: ${{ github.ref_name }}
           # This is important to fetch the changes to the previous commit
           fetch-depth: 0
+
 
       - name: Check branches
         run: git branch --all
