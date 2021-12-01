@@ -17,7 +17,10 @@ jobs:
       - name: Checkout
         run: |
           git fetch origin ${{ github.ref }}:${{ github.head_ref }}
-          git checkout ${{ github.head_ref }}
+          # git checkout ${{ github.head_ref }}
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git checkout "${GITHUB_REF:11}"
+
 
       # - name: Prettify code
       #   uses: creyD/prettier_action@v4.0
@@ -82,8 +85,8 @@ jobs:
 
       # - name: Check branches
       # #   run:
-      # - run: git remote
-      # - run: git status
-      # - run: git branch --all
+      - run: git remote
+      - run: git status
+      - run: git branch --all
       
 
