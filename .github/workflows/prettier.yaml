@@ -16,7 +16,7 @@ jobs:
 
       - name: Checkout
         run: |
-          git fetch origin ${{ github.ref}}:${{ github.head_ref }}
+          git fetch origin ${{ github.ref }}:${{ github.head_ref }}
           git checkout ${{ github.head_ref }}
 
       # - name: Prettify code
@@ -39,7 +39,7 @@ jobs:
           git config --global user.name "GitHub Action"
           git add date.txt
           git commit -m "update date" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" 
-          git push
+          git push origin ${{ github.head_ref }}
 
 
       # - run: echo action ${{ github.action }}
