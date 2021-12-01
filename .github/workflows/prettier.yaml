@@ -9,81 +9,91 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone
-        uses: actions/checkout@v2
-        with:
-          depth: 0
+      - uses: actions/checkout@v2
+      - run: |
+          date > generated.txt
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
 
-      - name: Checkout
-        run: |
-          git fetch origin ${{ github.ref }}:${{ github.head_ref }}
-          git checkout ${{ github.head_ref }}
+    # steps:
+    #   - name: Clone
+    #     uses: actions/checkout@v2
+    #     with:
+    #       depth: 0
 
-      # - name: Prettify code
-      #   uses: creyD/prettier_action@v4.0
-      #   with:
-      #     # This part is also where you can pass other options, for example:
-      #     commit_message: prettify the code \#tools-not-rules
-      #     prettier_options: --write *.js
-      #     only_changed: True
+    #   - name: Checkout
+    #     run: |
+    #       git fetch origin ${{ github.ref }}:${{ github.head_ref }}
+    #       git checkout ${{ github.head_ref }}
 
-      # - run: git config --list
+    #   # - name: Prettify code
+    #   #   uses: creyD/prettier_action@v4.0
+    #   #   with:
+    #   #     # This part is also where you can pass other options, for example:
+    #   #     commit_message: prettify the code \#tools-not-rules
+    #   #     prettier_options: --write *.js
+    #   #     only_changed: True
 
-      - name: Add date
-        run: |
-          date > date.txt
+    #   # - run: git config --list
+
+    #   - name: Add date
+    #     run: |
+    #       date > date.txt
       
-      - name: Push
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Action"
-          git add date.txt
-          git commit -m "update date" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" 
-          git push origin ${INPUT_PUSH_OPTIONS:-}
+    #   - name: Push
+    #     run: |
+    #       git config --global user.email "actions@github.com"
+    #       git config --global user.name "GitHub Action"
+    #       git add date.txt
+    #       git commit -m "update date" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" 
+    #       git push origin ${INPUT_PUSH_OPTIONS:-}
 
 
 
-      # - run: echo action ${{ github.action }}
-      # - run: echo action_path ${{ github.action_path }}
-      # - run: echo actor ${{ github.actor }}
-      # - run: echo base_ref ${{ github.base_ref }}
-      # - run: echo event_name ${{ github.event_name }}
-      # - run: echo event_path ${{ github.event_path }}
-      # - run: echo head_ref ${{ github.head_ref }}
-      # - run: echo job ${{ github.job }}
-      # - run: echo ref ${{ github.ref }}
-      # - run: echo ref_name ${{ github.ref_name }}
-      # - run: echo ref_protected ${{ github.ref_protected }}
-      # - run: echo ref_type ${{ github.ref_type }}
-      # - run: echo repository ${{ github.repository }}
-      # - run: echo repository_owner ${{ github.repository_owner }}
-      # - run: echo run_id ${{ github.run_id }}
-      # - run: echo run_number ${{ github.run_number }}
-      # - run: echo run_attempt ${{ github.run_attempt }}
-      # - run: echo server_url ${{ github.server_url }}
-      # - run: echo sha ${{ github.sha }}
-      # - run: echo token ${{ github.token }}
-      # - run: echo workflow ${{ github.workflow }}
-      # - run: echo workspace ${{ github.workspace }}
+    #   # - run: echo action ${{ github.action }}
+    #   # - run: echo action_path ${{ github.action_path }}
+    #   # - run: echo actor ${{ github.actor }}
+    #   # - run: echo base_ref ${{ github.base_ref }}
+    #   # - run: echo event_name ${{ github.event_name }}
+    #   # - run: echo event_path ${{ github.event_path }}
+    #   # - run: echo head_ref ${{ github.head_ref }}
+    #   # - run: echo job ${{ github.job }}
+    #   # - run: echo ref ${{ github.ref }}
+    #   # - run: echo ref_name ${{ github.ref_name }}
+    #   # - run: echo ref_protected ${{ github.ref_protected }}
+    #   # - run: echo ref_type ${{ github.ref_type }}
+    #   # - run: echo repository ${{ github.repository }}
+    #   # - run: echo repository_owner ${{ github.repository_owner }}
+    #   # - run: echo run_id ${{ github.run_id }}
+    #   # - run: echo run_number ${{ github.run_number }}
+    #   # - run: echo run_attempt ${{ github.run_attempt }}
+    #   # - run: echo server_url ${{ github.server_url }}
+    #   # - run: echo sha ${{ github.sha }}
+    #   # - run: echo token ${{ github.token }}
+    #   # - run: echo workflow ${{ github.workflow }}
+    #   # - run: echo workspace ${{ github.workspace }}
 
-      # - run: echo base_ref ${{ github.base_ref }}
-      # - run: echo head_ref ${{ github.head_ref }}
-      # - run: echo ref ${{ github.ref }}
-      # - run: echo ref_name ${{ github.ref_name }}
-      # - run: echo repository ${{ github.repository }}
-      # - run: echo ${{ github }}
+    #   # - run: echo base_ref ${{ github.base_ref }}
+    #   # - run: echo head_ref ${{ github.head_ref }}
+    #   # - run: echo ref ${{ github.ref }}
+    #   # - run: echo ref_name ${{ github.ref_name }}
+    #   # - run: echo repository ${{ github.repository }}
+    #   # - run: echo ${{ github }}
 
-      # - name: Long ass stuff
-      #   run: echo ${{ github.event.pull_request.head.ref }}
+    #   # - name: Long ass stuff
+    #   #   run: echo ${{ github.event.pull_request.head.ref }}
 
-      # - name: Clone
-      #   uses: actions/checkout@v2
+    #   # - name: Clone
+    #   #   uses: actions/checkout@v2
 
 
-      # - name: Check branches
-      # #   run:
-      # - run: git remote
-      # - run: git status
-      # - run: git branch --all
+    #   # - name: Check branches
+    #   # #   run:
+    #   # - run: git remote
+    #   # - run: git status
+    #   # - run: git branch --all
       
 
