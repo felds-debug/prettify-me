@@ -18,16 +18,26 @@ jobs:
         run: |
           git fetch origin ${{ github.ref}}:${{ github.head_ref }}
           git checkout ${{ github.head_ref }}
+
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.0
+        with:
+          # This part is also where you can pass other options, for example:
+          commit_message: prettify the code \#tools-not-rules
+          prettier_options: --write *.js
+          only_changed: True
+
+      - run: git config --list
+
+      # - name: Add date
+      #   run: |
+      #     date > date.txt
       
-      - name: Add date
-        run: |
-          date > date.txt
-      
-      - name: Push
-        run: |
-          git add date.txt
-          git commit -m "update date"
-          git push
+      # - name: Push
+      #   run: |
+      #     git add date.txt
+      #     git commit -m "update date"
+      #     git push
 
 
       # - run: echo action ${{ github.action }}
@@ -74,10 +84,3 @@ jobs:
       # - run: git branch --all
       
 
-      # - name: Prettify code
-      #   uses: creyD/prettier_action@v4.0
-      #   with:
-      #     # This part is also where you can pass other options, for example:
-      #     commit_message: prettify the code \#tools-not-rules
-      #     prettier_options: --write *.ts src/**/*.ts
-      #     only_changed: True
