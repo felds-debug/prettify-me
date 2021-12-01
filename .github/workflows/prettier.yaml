@@ -40,7 +40,7 @@ jobs:
       # - run: echo ${{ github }}
 
       - name: Checkout
-        uses: actions/checkout
+        uses: actions/checkout@latest
         with:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.ref_name }}
