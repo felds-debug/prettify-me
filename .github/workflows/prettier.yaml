@@ -15,9 +15,19 @@ jobs:
           depth: 0
 
       - name: Checkout
-        run: >-
-          git fetch origin ${{ github.ref}}:${{ github.head_ref }} &&
+        run: |
+          git fetch origin ${{ github.ref}}:${{ github.head_ref }}
           git checkout ${{ github.head_ref }}
+      
+      - name: Add date
+        run: |
+          date > date.txt
+      
+      - name: Push
+        run: |
+          git add date.txt
+          git ci -m "update date"
+          git push
 
 
       # - run: echo action ${{ github.action }}
@@ -58,10 +68,10 @@ jobs:
 
 
       # - name: Check branches
-      #   run:
-      - run: git remote
-      - run: git status
-      - run: git branch --all
+      # #   run:
+      # - run: git remote
+      # - run: git status
+      # - run: git branch --all
       
 
       # - name: Prettify code
