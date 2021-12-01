@@ -38,7 +38,8 @@ jobs:
       - name: Push
         run: |
           env
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          echo git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.actor }}/prettify-me
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.actor }}/prettify-me
           git remote show origin
           git fetch
           git branch --all
