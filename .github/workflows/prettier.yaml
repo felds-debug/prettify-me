@@ -46,11 +46,11 @@ jobs:
       #   uses: actions/checkout@v2
 
 
-      - name: Check branches
-        run:
-          - git remote
-          - git status
-          - git branch --all
+      # - name: Check branches
+      #   run:
+      - run: git remote
+      - run: git status
+      - run: git branch --all
       
 
       # - name: Prettify code
