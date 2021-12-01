@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Log stuff
-        run: echo "Hello, ${{ github.head_ref }}"
+      - run: echo base_ref ${{ github.base_ref }}
+      - run: echo head_ref ${{ github.head_ref }}
+      - run: echo ref ${{ github.ref }}
+      - run: echo ref_name ${{ github.ref_name }}
+      - run: echo repository ${{ github.repository }}
 
 
       # uses: actions/checkout@v2
