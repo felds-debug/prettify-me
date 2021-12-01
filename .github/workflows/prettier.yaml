@@ -12,14 +12,15 @@ jobs:
       - name: Clone
         uses: actions/checkout@v2
         with:
+          repository: ${{github.actor}}/prettify-me
           depth: 0
 
-      - name: Checkout
-        run: |
-          git fetch origin ${{ github.ref }}:${{ github.head_ref }}
-          # git checkout ${{ github.head_ref }}
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
-          git checkout "${GITHUB_REF:11}"
+      # - name: Checkout
+      #   run: |
+      #     git fetch origin ${{ github.ref }}:${{ github.head_ref }}
+      #     # git checkout ${{ github.head_ref }}
+      #     git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+      #     git checkout "${GITHUB_REF:11}"
 
 
       # - name: Prettify code
@@ -29,8 +30,6 @@ jobs:
       #     commit_message: prettify the code \#tools-not-rules
       #     prettier_options: --write *.js
       #     only_changed: True
-
-      - run: echo "${GITHUB_REF:11}"
 
       # - name: Add date
       #   run: |
