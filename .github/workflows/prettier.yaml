@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Clone
+        uses: actions/checkout@v2
+        with:
+          depth: 0
+
+
+
       # - run: echo action ${{ github.action }}
       # - run: echo action_path ${{ github.action_path }}
       # - run: echo actor ${{ github.actor }}
