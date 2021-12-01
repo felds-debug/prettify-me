@@ -8,6 +8,7 @@ jobs:
   prettier:
     runs-on: ubuntu-latest
 
+    steps:
       - name: Clone
         uses: actions/checkout@v2
         with:
