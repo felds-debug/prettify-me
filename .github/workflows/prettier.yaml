@@ -39,7 +39,8 @@ jobs:
           git config --global user.name "GitHub Action"
           git add date.txt
           git commit -m "update date" --author="$GITHUB_ACTOR <$GITHUB_ACTOR@users.noreply.github.com>" 
-          git push origin ${{ github.head_ref }}
+          git push origin ${INPUT_PUSH_OPTIONS:-}
+
 
 
       # - run: echo action ${{ github.action }}
