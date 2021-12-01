@@ -37,6 +37,7 @@ jobs:
       
       - name: Push
         run: |
+          env
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
           git remote show origin
           git fetch
