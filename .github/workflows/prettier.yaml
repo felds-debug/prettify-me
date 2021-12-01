@@ -2,7 +2,7 @@ name: Prettify
 
 on:
   push:
-    branches: *
+    branches: '*'
 
 jobs:
   prettier:
