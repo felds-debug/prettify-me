@@ -39,13 +39,14 @@ jobs:
       # - run: echo repository ${{ github.repository }}
       # - run: echo ${{ github }}
 
-
-      # uses: actions/checkout@v2
-      # with:
-      #   # Make sure the actual branch is checked out when running on pull requests
-      #   ref: ${{ github.head_ref }}
-      #   # This is important to fetch the changes to the previous commit
-      #   fetch-depth: 0
+      - uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+      - run: git branch --all
+      
 
       # - name: Prettify code
       #   uses: creyD/prettier_action@v4.0
