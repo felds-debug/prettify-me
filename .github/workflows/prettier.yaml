@@ -39,20 +39,18 @@ jobs:
       # - run: echo repository ${{ github.repository }}
       # - run: echo ${{ github }}
 
-      - name: Long ass stuff
-        run: echo ${{ github.event.pull_request.head.ref }}
+      # - name: Long ass stuff
+      #   run: echo ${{ github.event.pull_request.head.ref }}
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.ref_name }}
-          # This is important to fetch the changes to the previous commit
-          fetch-depth: 0
+      # - name: Clone
+      #   uses: actions/checkout@v2
 
 
       - name: Check branches
-        run: git branch --all
+        run:
+          - git remote
+          - git status
+          - git branch --all
       
 
       # - name: Prettify code
